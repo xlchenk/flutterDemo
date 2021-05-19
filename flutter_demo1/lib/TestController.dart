@@ -8,15 +8,22 @@ class TestRoute extends StatelessWidget {
           title: Text('测试页面'),
           backgroundColor: Colors.red,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 20,
-            ),
-            Center(
-              child: Text('dfsdfs'),
-            )
-          ],
-        ));
+        body: ContentRoute());
+  }
+}
+
+class ContentRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        SizedBox(
+          height: 20,
+        ),
+        Center(
+          child: Text('dfsdfs'),
+        )
+      ],
+    );
   }
 }
