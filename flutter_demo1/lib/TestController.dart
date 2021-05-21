@@ -5,6 +5,13 @@ class TestRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(Icons.add),
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onPressed: () {})
+          ],
           title: Text('测试页面'),
           backgroundColor: Colors.red,
         ),
@@ -44,7 +51,9 @@ class ContentRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return _ListViewDemo1();
+
+    Container(
         color: Colors.grey.withOpacity(.5),
         alignment: Alignment.topCenter,
         child: Column(
@@ -78,7 +87,7 @@ class ContentRoute extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
-            _Axis()
+            _Axis(),
           ],
         ));
   }
@@ -96,6 +105,78 @@ class _Axis extends StatelessWidget {
           border: Border(
               left: BorderSide(color: Colors.green, width: 2),
               bottom: BorderSide(color: Colors.green, width: 2))),
+    );
+  }
+}
+
+class _ListViewDemo1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+        scrollDirection: Axis.vertical,
+        reverse: false,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            // color: Colors.blue,
+            height: 45,
+            alignment: Alignment.center,
+            child: Text(
+              '$index',
+              // style: TextStyle(height: 45),
+            ),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider(
+            color: Colors.red,
+          );
+        },
+        itemCount: 15);
+  }
+}
+
+///数据少的时候
+class _ListCuctomView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        _ListItem(
+          title: '1',
+        ),
+        _ListItem(
+          title: '2',
+        ),
+        _ListItem(
+          title: '3',
+        ),
+        _ListItem(
+          title: '4',
+        ),
+        _ListItem(
+          title: '5',
+        ),
+        _ListItem(
+          title: '6',
+        ),
+      ],
+    );
+  }
+}
+
+// 客服处理中,请耐心等待
+class _ListItem extends StatelessWidget {
+  final String title;
+
+  const _ListItem({Key key, this.title}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        height: 45,
+        alignment: Alignment.center,
+        child: Text('$title'),
+      ),
     );
   }
 }
