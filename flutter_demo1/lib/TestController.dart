@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo1/SecondController.dart';
 
 class TestRoute extends StatelessWidget {
   @override
@@ -10,7 +11,15 @@ class TestRoute extends StatelessWidget {
                 icon: Icon(Icons.add),
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
-                onPressed: () {})
+                onPressed: () {
+                  print('object');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => SecondDemoRouter(
+                                title: 'secondTest页面',
+                              )));
+                })
           ],
           title: Text('测试页面'),
           backgroundColor: Colors.red,
