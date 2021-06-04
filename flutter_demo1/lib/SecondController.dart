@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SecondDemoRouter extends StatelessWidget {
@@ -11,7 +12,33 @@ class SecondDemoRouter extends StatelessWidget {
         title: Text('$title'),
       ),
       body: Center(
-        child: _Demo2(),
+        child: RaisedButton(
+          child: Text('切换'),
+          onPressed: () {
+            showCupertinoDialog(
+                context: context,
+                builder: (context) {
+                  return CupertinoAlertDialog(
+                    title: Text('提示'),
+                    content: Text('需要删除吗？'),
+                    actions: [
+                      CupertinoDialogAction(
+                        child: Text('取消'),
+                        onPressed: () {
+                          Navigator.of(context).pop('canell');
+                        },
+                      ),
+                      CupertinoDialogAction(
+                        child: Text('确定'),
+                        onPressed: () {
+                          Navigator.of(context).pop('sure');
+                        },
+                      )
+                    ],
+                  );
+                });
+          },
+        ),
       ),
     );
   }
@@ -20,18 +47,74 @@ class SecondDemoRouter extends StatelessWidget {
 class _Demo2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return AboutListTile(
+      icon: FlutterLogo(),
+      applicationName: '标题',
+      applicationVersion: 'V1.0.0',
+      applicationIcon: FlutterLogo(),
+      applicationLegalese: '专注分享Flutter相关内容',
+      child: Text("hello world"),
+    );
+    Row(
       children: <Widget>[
         Container(
           color: Colors.red,
           height: 50,
-          width: 100,
+          width: 140,
         ),
+        Flexible(
+            child: Container(
+          color: Colors.blue,
+          height: 50,
+        )),
         Container(
           color: Colors.red,
           height: 50,
           width: 100,
         )
+      ],
+    );
+  }
+}
+
+class _Demo3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Flexible(
+          flex: 1,
+          child: Container(
+            color: Colors.blue,
+            alignment: Alignment.center,
+            child: Text(
+              '1 Flex/ 6 Total',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+        Flexible(
+          flex: 2,
+          child: Container(
+            color: Colors.red,
+            alignment: Alignment.center,
+            child: Text(
+              '2 Flex/ 6 Total',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+        Flexible(
+          flex: 3,
+          child: Container(
+            color: Colors.green,
+            alignment: Alignment.center,
+            child: Text(
+              '3 Flex/ 6 Total',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
       ],
     );
   }
