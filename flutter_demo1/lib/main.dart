@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       initialRoute: "first_Route", //名为"/"的路由作为应用的home(首页)
-      debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
         primarySwatch: Colors.blue,
         splashColor: Colors.transparent,
@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
             TipsRoute(text: ModalRoute.of(context).settings.arguments),
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'), //注册首页路由
       },
+      debugShowCheckedModeBanner: false,
+
       // home: RouterTextRoute(),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
